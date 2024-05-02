@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 
-function Login1() {
+function LoginLayout() {
   return (
     <div>
       <p style={{color: 'white'}}>Login header</p>
@@ -10,4 +10,4 @@ function Login1() {
   )
 }
 
-export default Login1
+export default LoginLayout

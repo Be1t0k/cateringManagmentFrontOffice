@@ -6,6 +6,7 @@ import { useState } from "react";
 import Login from "../../pages/Login";
 import Login1 from "../../pages/Login1";
 import GamePage from "../../pages/GamePage";
+import LoginLayout from "../../pages/LoginLayout";
 
 const Content = () => {
 
@@ -20,9 +21,9 @@ const Content = () => {
             ))
           }
         </Route>
-        <Route path='/register' element={<Login1 />}>
+        <Route path='/register' element={<LoginLayout />}>
           {
-            <Route key={"Login1"} path={"create"} Component={GamePage} />
+            <Route key={"LoginLayout"} path={"create"} Component={LoginLayout} />
           }
         </Route>
         <Route key={"login"} path={"login"} Component={Login} />
