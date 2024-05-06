@@ -1,15 +1,16 @@
 import "./Transactions.css";
-import { transactions } from "../../data/data";
+import { transactions } from "../../utils/data";
 import { iconsImgs } from "../../utils/images";
+import { NavLink } from "react-router-dom";
 
 const Transactions = () => {
   return (
     <div className="grid-one-item grid-common grid-c2">
         <div className="grid-c-title">
-            <h3 className="grid-c-title-text">All Transactions</h3>
-            <button className="grid-c-title-icon">
+            <h3 className="grid-c-title-text">Все сотрудники</h3>
+            <NavLink to={'/addstaff'} className="grid-c-title-icon">
                 <img src={ iconsImgs.plus } />
-            </button>
+            </NavLink>
         </div>
 
         <div className="grid-content">

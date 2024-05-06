@@ -1,4 +1,4 @@
-import { savings } from "../../data/data";
+import { savings } from "../../utils/data";
 import { iconsImgs, personsImgs } from "../../utils/images";
 import "./Savings.css";
 

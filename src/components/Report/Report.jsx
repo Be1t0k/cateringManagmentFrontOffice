@@ -1,6 +1,6 @@
 import { iconsImgs } from "../../utils/images";
 import "./Report.css";
-import { reportData } from "../../data/data";
+import { reportData } from "../../utils/data";
 
 const Report = () => {
   return (

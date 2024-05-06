@@ -3,44 +3,42 @@ import { useRef, useState, useEffect, useContext } from 'react';
 //import { AuthContext } from '../context/context';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+import PhoneInput, { PhoneNumber } from 'react-phone-number-input/input';
 
 const Login = () => {
   //const { isAuth, setIsAuth, setClient, isClient } = useContext(AuthContext);
-  const userRef = useRef();
-  const emailRef = useRef();
+  const phoneRef = useRef();
   const errRef = useRef();
-  
 
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('+7');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [setClient, isClient] = useState(false);
-  
+
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, pwd])
+  }, [phone, pwd])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(phone.length);
       const response = await axios.post('http://localhost:8080/login',
-        JSON.stringify({ name: user, password: pwd }),
+        JSON.stringify({ phone: phone, password: pwd }),
         {
           headers: { 'Content-Type': 'application/json' },
           withCredentials: false
         }
       );
       const client_data = response.data;
-      setClient({ id: response.data.clientDTO.id, name: response.data.clientDTO.name, email: email, password: pwd });
+      setClient({ id: response.data.clientDTO.id, phone: response.data.clientDTO.name, password: pwd });
       setIsAuth(true);
       localStorage.setItem('auth', true);
-      localStorage.setItem('client_data', JSON.stringify({ id: client_data.clientDTO.id, name: client_data.clientDTO.name, email : email, password: client_data.clientDTO.password, role: client_data.rolesDTO.id}));
-      setUser('');
-      setEmail('');
+      localStorage.setItem('client_data', JSON.stringify({ id: client_data.clientDTO.id, phone: response.data.clientDTO.name, password: client_data.clientDTO.password, role: client_data.rolesDTO.id }));
+      setPhone('');
       setPwd('');
       setSuccess(true);
     } catch (err) {
@@ -70,29 +68,18 @@ const Login = () => {
       ) : (
         <section>
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-          <h1 className='btn-login-center'>Sign In</h1>
+          <h1 className='btn-login-center'>Вход</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-            />
 
-            <label htmlFor="email">Email:</label>
-            <input
-              type="text"
-              id="email"
-              ref={emailRef}
+            <label htmlFor="phone">Номер телефона:</label>
+            <PhoneInput
+              value={phone}
+              ref={phoneRef}
               autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              name="phone"
+              onChange={setPhone}
               required
-            />
+              maxLength="16" />
 
             <label htmlFor="password">Password:</label>
             <input
@@ -102,9 +89,9 @@ const Login = () => {
               value={pwd}
               required
             />
-            <button className={ `nav-link active ${5 == 5 ? 'btn-login-center' : null}` }>Login</button>
+            <button className={`nav-link active ${5 == 5 ? 'btn-login-center' : null}`}>Login</button>
           </form>
-          </section>
+        </section>
       )}
     </div>
   )

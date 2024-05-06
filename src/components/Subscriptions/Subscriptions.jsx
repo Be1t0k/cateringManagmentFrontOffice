@@ -1,4 +1,4 @@
-import { subscriptions } from "../../data/data"
+import { subscriptions } from "../../utils/data"
 import { iconsImgs } from "../../utils/images"
 import "./Subscriptions.css";
 

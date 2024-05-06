@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../../utils/routes";
 import { useState } from "react";
 import Login from "../../pages/Login";
-import Login1 from "../../pages/Login1";
 import GamePage from "../../pages/GamePage";
 import LoginLayout from "../../pages/LoginLayout";
 
@@ -23,7 +22,7 @@ const Content = () => {
         </Route>
         <Route path='/register' element={<LoginLayout />}>
           {
-            <Route key={"LoginLayout"} path={"create"} Component={LoginLayout} />
+            <Route key={"GamePage"} path={"create"} Component={GamePage} />
           }
         </Route>
         <Route key={"login"} path={"login"} Component={Login} />

@@ -14,7 +14,7 @@ const ContentMain = () => {
     <div className="main-content-holder">
         <div className="content-grid-one">
             <Cards />
-            <Transactions />
+            <Cards />
             <Report />
         </div>
         <div className="content-grid-two">

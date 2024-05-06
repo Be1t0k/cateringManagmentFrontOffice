@@ -1,6 +1,6 @@
 import "./Budget.css";
 import { iconsImgs } from "../../utils/images";
-import { budget } from "../../data/data";
+import { budget } from "../../utils/data";
 
 const Budget = () => {
   return (

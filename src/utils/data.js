@@ -1,17 +1,15 @@
-import { iconsImgs } from "../utils/images";
-import { personsImgs } from "../utils/images";
+import { iconsImgs } from "./images";
+import { personsImgs } from "./images";
 
 export const navigationLinks = [
-    { id: 1, title: 'Home', image: iconsImgs.home },
-    { id: 2, title: 'Budget', image: iconsImgs.budget },
-    { id: 3, title: 'Transactions', image: iconsImgs.plane },
-    { id: 4, title: 'Subscriptions', image: iconsImgs.wallet },
-    { id: 5, title: 'Loans', image: iconsImgs.bills },
-    { id: 6, title: 'Reports', image: iconsImgs.report },
-    { id: 7, title: 'Savings', image: iconsImgs.wallet },
-    { id: 8, title: 'Financial Advice', image: iconsImgs.wealth },
-    { id: 9, title: 'Account', image: iconsImgs.user },
-    { id: 10, title: 'Settings', image: iconsImgs.gears }
+    { id: 1, title: 'Home', route: 'Home', image: iconsImgs.home },
+    { id: 2, title: 'Блюда', route: 'Dishes', image: iconsImgs.budget },
+    { id: 3, title: 'Стоп-лист', route: 'StopList', image: iconsImgs.plane },
+    { id: 4, title: 'Скидки', route: 'Sales', image: iconsImgs.wallet },
+    { id: 5, title: 'Заказы', route: 'Orders', image: iconsImgs.bills },
+    { id: 6, title: 'Сотрудники', route: 'Staff', image: iconsImgs.user },
+    { id: 7, title: 'Расписание работ', route: 'Schedule', image: iconsImgs.user },
+    { id: 8, title: 'Settings', route: 'Settings', image: iconsImgs.gears }
 ];
 
 export const transactions = [
@@ -19,23 +17,44 @@ export const transactions = [
         id: 11, 
         name: "Sarah Parker",
         image: personsImgs.person_four,
-        date: "23/12/04",
+        date: "Работает с 23/12/04",
         amount: 22000
     },
     {
         id: 12, 
         name: "Krisitine Carter",
         image: personsImgs.person_three,
-        date: "23/07/21",
+        date: "Работает с 23/07/21",
         amount: 20000
     },
     {
         id: 13, 
         name: "Irene Doe",
         image: personsImgs.person_two,
-        date: "23/08/25",
+        date: "Работает с 23/08/25",
         amount: 30000
-    }
+    },
+    {
+        id: 11, 
+        name: "Sarah Parker",
+        image: personsImgs.person_four,
+        date: "Работает с 23/12/04",
+        amount: 22000
+    },
+    {
+        id: 12, 
+        name: "Krisitine Carter",
+        image: personsImgs.person_three,
+        date: "Работает с 23/07/21",
+        amount: 20000
+    },
+    {
+        id: 13, 
+        name: "Irene Doe",
+        image: personsImgs.person_two,
+        date: "Работает с 23/08/25",
+        amount: 30000
+    },
 ];
 
 export const reportData = [
