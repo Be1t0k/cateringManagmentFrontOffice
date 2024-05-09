@@ -161,6 +161,7 @@ a:visited {
 }
 
 input,
+select,
 button,
 textarea {
   font-family: var(--font-family-bai);

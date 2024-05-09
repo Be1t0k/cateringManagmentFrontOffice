@@ -1,0 +1,9 @@
+.myBtn{
+    margin: 0;
+    padding: 15px 30px;
+    border: none;
+    font-size: 14px;
+    color: ghostwhite;
+    background: linear-gradient(to top left, red, orange);
+    width: min-content;
+}

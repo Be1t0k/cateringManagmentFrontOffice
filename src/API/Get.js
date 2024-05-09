@@ -41,4 +41,9 @@ export default class Get {
         const response = await axios.get(`http://localhost:8081/api/v1/dish`)
         return response;
     }
+
+    static async getStopListDishes(){
+        const response = await axios.get(`http://localhost:8081/api/v1/dish/menu?category=STOPPED`)
+        return response;
+    }
 }
