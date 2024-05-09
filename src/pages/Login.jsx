@@ -89,7 +89,7 @@ const Login = () => {
               value={pwd}
               required
             />
-            <button className={`nav-link active ${5 == 5 ? 'btn-login-center' : null}`}>Login</button>
+            <button className={`nav-link active btn-login-center`} disabled={(pwd.length < 5) || (phone.length < 11) ? true : false}>Login</button>
           </form>
         </section>
       )}

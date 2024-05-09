@@ -3,6 +3,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import PhoneInput from 'react-phone-number-input/input';
+import { NavLink } from "react-router-dom";
 
 const name_REGEX = /^[а-яёА-ЯЁ]{2,23}$/;
 const PWD_REGEX = /^(?=.*[A-z])(?=.*[0-9]).{6,24}$/;
@@ -33,10 +34,6 @@ const AddStaff = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        nameRef.current.focus();
-    }, [])
-
-    useEffect(() => {
         setValidName(name_REGEX.test(name));
     }, [name])
 
@@ -60,7 +57,7 @@ const AddStaff = () => {
         }
         try {
             const response = await axios.post('http://localhost:8082/api/v1/client',
-                JSON.stringify({ name: name, password: pwd }),
+                JSON.stringify({ number: phone, name: name, secondName: lastname , itn: itn, salary: salary, password: pwd }),
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -70,23 +67,17 @@ const AddStaff = () => {
                     withCredentials: false
                 }
             );
-            console.log(JSON.stringify({ name: name, password: pwd }));
-            console.log(response?.data);
-            console.log(response?.accessToken);
             console.log(JSON.stringify(response))
             setSuccess(true);
             localStorage.setItem('auth', 'true');
-            //clear state and controlled inputs
-            //need value attrib on inputs for this
             setname('');
             setPwd('');
             setMatchPwd('');
         } catch (err) {
-            console.log(JSON.stringify({ name: name, password: pwd }));
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
-                setErrMsg('namename Taken');
+                setErrMsg('username Taken');
             } else {
                 setErrMsg('Registration Failed')
             }
@@ -97,11 +88,9 @@ const AddStaff = () => {
     return (
         <div className="wrapper">
             {success ? (
-                <section>
-                    <h1>Успешный вход!</h1>
-                    <p>
-                        <a href="/">Войти</a>
-                    </p>
+                <section className="btn-login-center">
+                    <h1>Успешная регистрация!</h1>
+                    <NavLink to={'/staff'}><p>к списку сотрудников</p></NavLink>
                 </section>
             ) : (
                 <section>
@@ -208,7 +197,7 @@ const AddStaff = () => {
                             <FontAwesomeIcon icon={faInfoCircle} />
                             Должен совпадать с полем "Пароль"
                         </p>
-                        <button className={`nav-link active ${5 == 5 ? 'btn-login-center' : null}`} disabled={!validName || !validPwd || !validMatch ? true : false}>Зарегистрировать</button>
+                        <button className={`nav-link active btn-login-center`} disabled={!validName || !validPwd || !validMatch ? true : false}>Зарегистрировать</button>
                     </form>
                 </section>
             )}

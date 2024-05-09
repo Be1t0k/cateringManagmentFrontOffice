@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "../../utils/routes";
 import { useState } from "react";
 import Login from "../../pages/Login";
-import GamePage from "../../pages/GamePage";
 import LoginLayout from "../../pages/LoginLayout";
 
 const Content = () => {
@@ -20,11 +19,11 @@ const Content = () => {
             ))
           }
         </Route>
-        <Route path='/register' element={<LoginLayout />}>
+        {/* <Route path='/register' element={<LoginLayout />}>
           {
             <Route key={"GamePage"} path={"create"} Component={GamePage} />
           }
-        </Route>
+        </Route> */}
         <Route key={"login"} path={"login"} Component={Login} />
       </Routes>
     </div>

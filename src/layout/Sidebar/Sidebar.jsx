@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { personsImgs } from '../../utils/images';
-import { navigationLinks } from '../../data/data';
 import {NavLink} from 'react-router-dom';
 import "./Sidebar.css";
+import { navigationLinks } from '../../utils/data';
 
 const Sidebar = () => {
   const [activeLinkIdx] = useState();

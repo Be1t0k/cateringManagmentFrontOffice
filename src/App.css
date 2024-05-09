@@ -13,6 +13,7 @@
   --clr-white: #fff;
   --clr-black: #000;
   --clr-pumpkin: #fe6c00;
+  --clr-pumpkin-v1: #fe6e00a2;
   --clr-silver: #a8a5a6;
   --clr-silver-v1: #bdbabb;
   --clr-silver-v2: #e6e6e6;
@@ -238,7 +239,9 @@ label {
 
 .btn-login-center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .content-flex-wrap{
@@ -246,4 +249,8 @@ label {
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: baseline;
+}
+
+input{
+  background-color: var(--clr-silver-v2);
 }
