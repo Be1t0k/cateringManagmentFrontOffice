@@ -28,7 +28,7 @@ const DishStopList = () => {
                     :
                     <div className="content-flex-wrap">
                         {
-                            dishes.map(dish => <Dish id={dish.id} title={dish.title} />)
+                            dishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} />)
                         }
                     </div>
             }

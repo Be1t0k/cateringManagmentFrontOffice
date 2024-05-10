@@ -5,7 +5,7 @@ import { useFetching } from '../hooks/useFetching';
 import { iconsImgs } from '../utils/images';
 import Get from '../API/Get';
 import Loader from '../components/Loader/Loader';
-import { useGames } from '../hooks/useDish';
+import { useDishes } from '../hooks/useDish';
 import DishFilter from '../components/DishFilter/DishFilter';
 
 function Dishes() {
@@ -14,7 +14,7 @@ function Dishes() {
     const [dishes, setDishes] = useState([]);
     const [filter, setFilter] = useOutletContext();
     // const [filter, setFilter] = useState({ sort: '', query: '' });
-    const sortedAndSearchedDishes = useGames(dishes, filter.sort, filter.query);
+    const sortedAndSearchedDishes = useDishes(dishes, filter.sort, filter.query);
 
     const [fetchPriceById, isLoading] = useFetching(async () => {
         const response = await Get.getDishes()
@@ -37,7 +37,7 @@ function Dishes() {
                     :
                     <div className="content-flex-wrap">
                         {
-                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} />)
+                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} />)
                         }
                     </div>
             }
