@@ -12,7 +12,7 @@ const Dish = ({ id, title, remove, dish }) => {
                 <NavLink to={`/dish/${id}`} className="grid-c-title-icon"><img src={iconsImgs.plus} /></NavLink>
                 <NavLink to={`/dish/${id}`} className="grid-c-title-icon"><img src={iconsImgs.gears} /></NavLink>
                 {
-                    title == 'Говяжьи котлеты' ?
+                    dish.dishCategory === 'STOPPED' ?
                         null :
                         <button className="grid-c-title-icon" onClick={() => remove(dish)}>
                             <img src={iconsImgs.alert} />
@@ -21,8 +21,11 @@ const Dish = ({ id, title, remove, dish }) => {
             </div>
             <img src="http://localhost:3000/static/media/person_two.348b2fcc3bf8c629eea7.jpg" alt="" />
             <div className="grid-c8-content">
-                <p className="text text-silver-v1">Ipsum dolor sit amet consectetur, adipisicing elit.
-                    Iste, vitae.....</p>
+                <p className="text text-silver-v1">{`Стоимость ${dish.cost}`}</p>
+                <p className="text text-silver-v1">{`Скидка категории ${dish.discount}`}</p>
+                {dish.dishStatus === 'REGULAR'
+                ? <p className="text text-silver-v1">Тип блюда - {`Обычное`}</p>
+                : <p className="text text-silver-v1">Тип блюда - {`Измененное`}</p>}
             </div>
         </div>
     )

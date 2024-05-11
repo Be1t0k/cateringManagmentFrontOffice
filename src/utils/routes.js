@@ -5,6 +5,7 @@ import Dishes from '../pages/Dishes';
 import DishPage from '../pages/DishPage';
 import DishStopList from '../pages/DishStopList';
 import Orders from '../pages/Orders';
+import CreateDish from '../pages/CreateDish';
 
 
 export const publicRoutes = [

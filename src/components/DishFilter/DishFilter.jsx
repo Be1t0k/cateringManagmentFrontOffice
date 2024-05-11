@@ -15,7 +15,7 @@ const DishFilter = ({ filter, setFilter, fetchGames }) => {
                 value={filter.query}
                 onChange={e => setFilter({ ...filter, query: e.target.value })}
                 placeholder="Введите название" /> */}
-            <MySelect
+            {/* <MySelect
                 value={filter.sort}
                 onChange={selectedSort => setFilter({ ...filter, sort: selectedSort })}
                 defaultValue={'По умолчанию'} options={[
@@ -23,7 +23,7 @@ const DishFilter = ({ filter, setFilter, fetchGames }) => {
                     { value: 'description', title: 'По описанию' }
                 ]}>
                 По умолчанию
-            </MySelect>
+            </MySelect> */}
         </div>
     )
 }
