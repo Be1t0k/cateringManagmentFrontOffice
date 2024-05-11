@@ -7,36 +7,44 @@ import Get from '../API/Get';
 import Loader from '../components/Loader/Loader';
 import { useDishes } from '../hooks/useDish';
 import DishFilter from '../components/DishFilter/DishFilter';
+import Order from '../components/Order/Order';
 
-function Dishes() {
+const Orders = () => {
 
     const params = useParams();
-    const [dishes, setDishes] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [filter, setFilter] = useOutletContext();
-    const sortedAndSearchedDishes = useDishes(dishes, filter.sort, filter.query);
+    const sortedAndSearchedDishes = useDishes(orders, filter.sort, filter.query);
 
     const [fetchPriceById, isLoading] = useFetching(async () => {
-        const response = await Get.getDishes()
-        setDishes(response.data);
+        const response = await Get.getOrders()
+        setOrders(response.data);
     })
 
     useEffect(() => {
         fetchPriceById(params?.id);
     }, [])
 
+
     return (
         <div className="main-content-holder">
             <DishFilter
                 filter={filter}
                 setFilter={setFilter}
-                fetchGames={dishes} />
+                fetchGames={orders} />
             {
                 isLoading
-                    ? <Loader/>
+                    ? <Loader />
                     :
                     <div className="content-flex-wrap">
                         {
-                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} />)
+                            orders.map(order => <Order id={order.id}
+                                acceptance_date={order.acceptance_date}
+                                basketStatus={order.basketStatus}
+                                bonus={order.bonus}
+                                clientId={order.clientId}
+                                total_price={order.total_price}
+                                key={order.id} />)
                         }
                     </div>
             }
@@ -45,4 +53,4 @@ function Dishes() {
     )
 }
 
-export default Dishes
+export default Orders

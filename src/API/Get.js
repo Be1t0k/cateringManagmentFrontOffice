@@ -46,4 +46,14 @@ export default class Get {
         const response = await axios.get(`http://localhost:8081/api/v1/dish/menu?category=STOPPED`)
         return response;
     }
+
+    static async getOrders(){
+        const response = await axios.get(`http://localhost:8081/api/v1/basket?status=PAID`)
+        return response;
+    }
+
+    static async getDishById(id){
+        const response = await axios.get(`http://localhost:8081/api/v1/dish/${id}`)
+        return response;
+    }
 }

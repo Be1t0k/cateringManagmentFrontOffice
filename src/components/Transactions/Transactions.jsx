@@ -3,7 +3,7 @@ import { transactions } from "../../utils/data";
 import { iconsImgs } from "../../utils/images";
 import { NavLink } from "react-router-dom";
 
-const Transactions = () => {
+const Transactions = ({transaction}) => {
   return (
     <div className="grid-one-item grid-common grid-c2">
         <div className="grid-c-title">

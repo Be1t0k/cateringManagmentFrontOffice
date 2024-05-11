@@ -4,6 +4,7 @@ import AddStaff from '../pages/AddStaff';
 import Dishes from '../pages/Dishes';
 import DishPage from '../pages/DishPage';
 import DishStopList from '../pages/DishStopList';
+import Orders from '../pages/Orders';
 
 
 export const publicRoutes = [
@@ -33,5 +34,9 @@ export const privateRoutes = [
     {
         name: Account,
         path: '/staff'
+    },
+    {
+        name: Orders,
+        path: '/orders'
     }
 ];

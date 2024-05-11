@@ -1,22 +1,22 @@
 import {useMemo} from "react";
 
-export const useSortedDishes = (games, sort) => {
-    const sortedGames = useMemo(() => {
+export const useSortedDishes = (dishs, sort) => {
+    const sortedDishes = useMemo(() => {
         if(sort) {
-            return [...games].sort((a, b) => a[sort]?.localeCompare(b[sort]))
+            return [...dishs].sort((a, b) => a[sort]?.localeCompare(b[sort]))
         }
-        return games.filter(game => game.dishCategory != 'STOPPED');
-    }, [sort, games])
+        return dishs.filter(dish => dish.dishCategory != 'STOPPED');
+    }, [sort, dishs])
 
-    return sortedGames;
+    return sortedDishes;
 }
 
-export const useDishes = (games, sort, query) => {
-    const sortedGames = useSortedDishes(games, sort).filter(game => game.dishCategory != 'STOPPED');
+export const useDishes = (dishs, sort, query) => {
+    const sortedDishes = useSortedDishes(dishs, sort).filter(dish => dish.dishCategory != 'STOPPED');
 
     const sortedAndSearchedDishes = useMemo(() => {
-        return sortedGames.filter(game => game?.title?.toLowerCase().includes(query.toLowerCase()))
-    }, [query, sortedGames])
+        return sortedDishes.filter(dish => dish?.title?.toLowerCase().includes(query.toLowerCase()))
+    }, [query, sortedDishes])
 
     return sortedAndSearchedDishes;
 }
