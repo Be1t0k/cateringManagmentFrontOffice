@@ -255,3 +255,7 @@ label {
 input{
   background-color: var(--clr-silver-v2);
 }
+
+.grid-items{
+  min-width: 300px;
+}

@@ -3,7 +3,7 @@ import "./Dish.css";
 import { iconsImgs } from '../../utils/images';
 import { NavLink } from 'react-router-dom';
 
-const Dish = ({id, title}) => {
+const Dish = ({ id, title, remove, dish }) => {
 
     return (
         <div className="subgrid-two-item grid-common-1">
@@ -11,7 +11,13 @@ const Dish = ({id, title}) => {
                 <h3 className="grid-c-title-text-1">{title}</h3>
                 <NavLink to={`/dish/${id}`} className="grid-c-title-icon"><img src={iconsImgs.plus} /></NavLink>
                 <NavLink to={`/dish/${id}`} className="grid-c-title-icon"><img src={iconsImgs.gears} /></NavLink>
-                <NavLink to={`/dish/${id}`} className="grid-c-title-icon"><img src={iconsImgs.alert} /></NavLink>
+                {
+                    title == 'Говяжьи котлеты' ?
+                        null :
+                        <button className="grid-c-title-icon" onClick={() => remove(dish)}>
+                            <img src={iconsImgs.alert} />
+                        </button>
+                }
             </div>
             <img src="http://localhost:3000/static/media/person_two.348b2fcc3bf8c629eea7.jpg" alt="" />
             <div className="grid-c8-content">

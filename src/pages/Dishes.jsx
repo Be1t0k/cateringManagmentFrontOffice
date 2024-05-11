@@ -7,6 +7,7 @@ import Get from '../API/Get';
 import Loader from '../components/Loader/Loader';
 import { useDishes } from '../hooks/useDish';
 import DishFilter from '../components/DishFilter/DishFilter';
+import axios from 'axios';
 
 function Dishes() {
 
@@ -24,6 +25,11 @@ function Dishes() {
         fetchPriceById(params?.id);
     }, [])
 
+    const removeDish = (dish) => {
+        setDishes(dishes.filter(p => p.id !== dish.id))
+        axios.post(`http://localhost:8081/api/v1/dish/${dish.id}`)
+    }
+
     return (
         <div className="main-content-holder">
             <DishFilter
@@ -36,7 +42,7 @@ function Dishes() {
                     :
                     <div className="content-flex-wrap">
                         {
-                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} />)
+                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} remove={removeDish} dish={dish}  />)
                         }
                     </div>
             }
