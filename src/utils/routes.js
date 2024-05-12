@@ -6,9 +6,25 @@ import DishPage from '../pages/DishPage';
 import DishStopList from '../pages/DishStopList';
 import Orders from '../pages/Orders';
 import CreateDish from '../pages/CreateDish';
+import NotFoundPage from '../pages/NotFoundPage';
 
 
 export const publicRoutes = [
+    {
+        name: NotFoundPage,
+        path: "*"
+    }
+];
+export const privateRoutes = [
+    
+    {
+        name: Account,
+        path: '/staff'
+    },
+    {
+        name: Orders,
+        path: '/orders'
+    },
     {
         name: DishPage,
         path: '/dish/:id'
@@ -28,16 +44,5 @@ export const publicRoutes = [
     {
         name: DishStopList,
         path: '/stoplist'
-    }
-];
-export const privateRoutes = [
-    
-    {
-        name: Account,
-        path: '/staff'
-    },
-    {
-        name: Orders,
-        path: '/orders'
     }
 ];

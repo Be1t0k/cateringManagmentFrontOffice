@@ -4,9 +4,10 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import PhoneInput, { PhoneNumber } from 'react-phone-number-input/input';
+import { AuthContext } from '../context';
 
 const Login = () => {
-  //const { isAuth, setIsAuth, setClient, isClient } = useContext(AuthContext);
+  const { isAuth, setIsAuth, setClient, isClient } = useContext(AuthContext);
   const phoneRef = useRef();
   const errRef = useRef();
 
@@ -14,8 +15,6 @@ const Login = () => {
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-  const [isAuth, setIsAuth] = useState(false);
-  const [setClient, isClient] = useState(false);
 
 
   useEffect(() => {
@@ -25,8 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(phone.length);
-      const response = await axios.post('http://localhost:8080/login',
+      const response = await axios.get(`http://localhost:8082/api/v1/client/login/${phone}`,
         JSON.stringify({ phone: phone, password: pwd }),
         {
           headers: { 'Content-Type': 'application/json' },
@@ -34,10 +32,10 @@ const Login = () => {
         }
       );
       const client_data = response.data;
-      setClient({ id: response.data.clientDTO.id, phone: response.data.clientDTO.name, password: pwd });
+      setClient({ id: response.data.workerInfo.id, phone: response.data.workerInfo.name, password: pwd });
       setIsAuth(true);
       localStorage.setItem('auth', true);
-      localStorage.setItem('client_data', JSON.stringify({ id: client_data.clientDTO.id, phone: response.data.clientDTO.name, password: client_data.clientDTO.password, role: client_data.rolesDTO.id }));
+      localStorage.setItem('client_data', JSON.stringify({ id: client_data.workerInfo?.id, phone: response.data.workerInfo.name, password: client_data.workerInfo.password, role: client_data.role?.id }));
       setPhone('');
       setPwd('');
       setSuccess(true);
@@ -62,7 +60,7 @@ const Login = () => {
           <h1>Вы в системе!</h1>
           <br />
           <p>
-            <NavLink to="/">На главную</NavLink>
+            <NavLink to="/home">На главную</NavLink>
           </p>
         </section>
       ) : (
