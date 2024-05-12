@@ -1,9 +1,8 @@
 import "./Transactions.css";
-import { transactions } from "../../utils/data";
 import { iconsImgs } from "../../utils/images";
 import { NavLink } from "react-router-dom";
 
-const Transactions = ({transaction}) => {
+const Transactions = ({employees}) => {
   return (
     <div className="grid-one-item grid-common grid-c2">
         <div className="grid-c-title">
@@ -16,16 +15,16 @@ const Transactions = ({transaction}) => {
         <div className="grid-content">
             <div className="grid-items">
                 {
-                    transactions.map((transaction) => (
-                        <div className="grid-item" key = { transaction.id }>
+                    employees.map((employee) => (
+                        <div className="grid-item" key = { employee.id }>
                             <div className="grid-item-l">
                                 <div className="avatar img-fit-cover">
-                                    <img src={ transaction.image } alt="" />
+                                    <img src={ employee.image } alt="" />
                                 </div>
-                                <p className="text">{ transaction.name } <span>{ transaction.date }</span></p>
+                                <p className="text">{ employee.workerInfo.name } <span>{ employee.number }</span></p>
                             </div>
                             <div className="grid-item-r">
-                                <span className="text-scarlet">$ { transaction.amount }</span>
+                                <span className="text-scarlet">$ { employee.workerInfo.salary }</span>
                             </div>
                         </div>
                     ))
