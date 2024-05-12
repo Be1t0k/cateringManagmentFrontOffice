@@ -56,4 +56,11 @@ export default class Get {
         const response = await axios.get(`http://localhost:8081/api/v1/dish/${id}`)
         return response;
     }
+
+    static async getIngredients(){
+        const response = await axios.get(`http://localhost:8081/api/v1/ingredient`)
+        return response;
+    }
+
+    
 }

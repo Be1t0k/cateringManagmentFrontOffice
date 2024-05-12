@@ -245,17 +245,17 @@ label {
   align-items: center;
 }
 
-.content-flex-wrap{
+.content-flex-wrap {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: baseline;
 }
 
-input{
+input {
   background-color: var(--clr-silver-v2);
 }
 
-.grid-items{
+.grid-items {
   min-width: 300px;
 }

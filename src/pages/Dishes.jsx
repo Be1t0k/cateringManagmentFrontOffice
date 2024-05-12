@@ -39,14 +39,13 @@ function Dishes() {
 
     return (
         <div className="main-content-holder">
+            <Modal visible={modal} setVisible={setModal}>
+                <CreateDishForm create={createPost} />
+            </Modal>
             <DishFilter
                 filter={filter}
                 setFilter={setFilter}
                 fetchGames={dishes} />
-
-            <Modal visible={modal} setVisible={setModal}>
-                <CreateDishForm create={createPost} />
-            </Modal>
 
             <button style={{width: '250px'}} onClick={() => setModal(true)} className='nav-link'>
                 <p>Добавить новое блюдо</p>
