@@ -38,13 +38,7 @@ const Orders = () => {
                     :
                     <div className="content-flex-wrap">
                         {
-                            orders.map(order => <Order id={order.id}
-                                acceptance_date={order.acceptance_date}
-                                basketStatus={order.basketStatus}
-                                bonus={order.bonus}
-                                clientId={order.clientId}
-                                total_price={order.total_price}
-                                key={order.id} />)
+                            orders.map(order => <Order order={order} key={order.id} />)
                         }
                     </div>
             }

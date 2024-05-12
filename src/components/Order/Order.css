@@ -41,7 +41,6 @@
     margin-top: 8px;
   }
   .grid-c6 .grid-item-fill {
-    width: 60%;
     height: 10px;
     background-color: var(--clr-pumpkin);
     border-radius: 100vh;

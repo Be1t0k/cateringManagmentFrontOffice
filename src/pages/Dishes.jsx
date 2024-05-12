@@ -8,6 +8,7 @@ import { useDishes } from '../hooks/useDish';
 import DishFilter from '../components/DishFilter/DishFilter';
 import axios from 'axios';
 import Modal from '../components/Modal/Modal';
+import CreateDishForm from '../components/CreateDishForm/CreateDishForm';
 
 function Dishes() {
 
@@ -31,25 +32,32 @@ function Dishes() {
         axios.post(`http://localhost:8081/api/v1/dish/${dish.id}`)
     }
 
+    const createPost = (newPost) => {
+        setDishes([...dishes, newPost])
+        setModal(false)
+    }
+
     return (
         <div className="main-content-holder">
             <DishFilter
                 filter={filter}
                 setFilter={setFilter}
                 fetchGames={dishes} />
+
             <Modal visible={modal} setVisible={setModal}>
-                <input type="text" />
+                <CreateDishForm create={createPost} />
             </Modal>
-            <button style={{marginTop: 30}} onClick={() => setModal(true)}>
-                <p>Создать пользователя</p>
+
+            <button style={{width: '250px'}} onClick={() => setModal(true)} className='nav-link'>
+                <p>Добавить новое блюдо</p>
             </button>
             {
                 isLoading
-                    ? <Loader/>
+                    ? <Loader />
                     :
                     <div className="content-flex-wrap">
                         {
-                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} remove={removeDish} dish={dish}  />)
+                            sortedAndSearchedDishes.map(dish => <Dish id={dish.id} title={dish.title} key={dish.id} remove={removeDish} dish={dish} />)
                         }
                     </div>
             }
